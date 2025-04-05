@@ -11,6 +11,8 @@ const {
   GET_INSTRUCTOR_DATA_API,
 } = profileEndpoints
 
+
+let toastId = null;
 export function getUserDetails(token, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
@@ -39,7 +41,10 @@ export function getUserDetails(token, navigate) {
 }
 
 export async function getUserEnrolledCourses(token) {
-  const toastId = toast.loading("Loading...")
+  console.log("ekkk")
+  if (!toastId) {
+    toastId = toast.loading("Loading...")
+  }
   let result = []
   try {
     const response = await apiConnector(
@@ -63,7 +68,10 @@ export async function getUserEnrolledCourses(token) {
     console.log("GET_USER_ENROLLED_COURSES_API API ERROR............", error)
     toast.error("Could Not Get Enrolled Courses")
   }
-  toast.dismiss(toastId)
+  if (toastId) {
+    toast.dismiss(toastId)
+    toastId = null
+  }
   return result
 }
 

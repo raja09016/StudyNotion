@@ -28,7 +28,7 @@ exports.sendOTP = async (req, res) => {
         lowerCaseAlphabets:false,
         specialChars:false,
     })
-    console.log("otp generated successfully" ,otp);
+    // console.log("otp generated successfully" ,otp);
 
     // make sure unique otp -- check in otp collection
     const result = await OTP.findOne({otp:otp});
@@ -48,7 +48,7 @@ exports.sendOTP = async (req, res) => {
     } 
 
     const otpBody = await OTP.create(otpPayLoad);
-    console.log(otpBody);
+    // console.log(otpBody);
 
     res.status(200).json({
         success:true,
@@ -108,8 +108,8 @@ exports.signUp = async (req,res)=>{
         // find the most recent otp saved for the user
 
         const recentOtp = await OTP.find({email}).sort({ createdAt: -1 }).limit(1);;
-        console.log("recentOtp-",recentOtp,);
-        console.log("length",recentOtp.length)
+        // console.log("recentOtp-",recentOtp,);
+        // console.log("length",recentOtp.length)
         // validate otp
         if(recentOtp.length === 0){
             // otp not found 
@@ -126,9 +126,9 @@ exports.signUp = async (req,res)=>{
             }) ;
         }
         // hash password
-        console.log("aaaya1")
+        // console.log("aaaya1")
         const hashedPassword = await bcrypt.hash(password,10);
-        console.log("aaaya2")
+        // console.log("aaaya2")
         // create entry
         let approved = "";
 		approved === "Instructor" ? (approved = false) : (approved = true);

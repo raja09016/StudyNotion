@@ -59,7 +59,7 @@ exports.categoryPageDetails = async(req, res) => {
         const {categoryId} = req.body;
         //Getting courses of the specified Category
         const selectedCategory = await Category.findById(categoryId).populate({path: "courses", match: { status: "Published" }, populate: "ratingAndReviews"}).exec();
-        console.log("SELECTED COURSE", selectedCategory)
+        // console.log("SELECTED COURSE", selectedCategory)
         //Validating the Courses
         if(!selectedCategory){
             return res.status(404).json({

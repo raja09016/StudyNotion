@@ -84,7 +84,7 @@ const Navbar = () => {
             </Link>
 
             {/* nav links */}
-            <nav>
+            <nav className=" hidden md:block ">
                 <ul className='flex gap-x-6 text-richblack-25'>
 
                     {
@@ -155,6 +155,7 @@ const Navbar = () => {
 
 
             <div className="hidden items-center gap-x-4 md:flex">
+
                         {/* dashboard */}
                     {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
 
@@ -190,6 +191,7 @@ const Navbar = () => {
 
             {/* three line if screen is small */}
             <MobileNav 
+            
           NavbarLinks={NavbarLinks}
           matchRoute={matchRoute}
           subLinks={subLinks}

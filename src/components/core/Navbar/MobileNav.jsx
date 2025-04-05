@@ -4,6 +4,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ProfileDropdown from '../Auth/ProfileDropDown';
 
 const MobileNav = ({ NavbarLinks, matchRoute, subLinks, loading, user, totalItems }) => {
   const { token } = useSelector((state) => state.auth);
@@ -12,6 +13,7 @@ const MobileNav = ({ NavbarLinks, matchRoute, subLinks, loading, user, totalItem
 
   return (
     <div className="md:hidden relative z-[1000]">
+         {token !== null && <ProfileDropdown />}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -117,6 +119,7 @@ const MobileNav = ({ NavbarLinks, matchRoute, subLinks, loading, user, totalItem
       >
         <AiOutlineMenu fontSize={24} className="text-richblack-25" />
       </button>
+     
     </div>
   );
 };
