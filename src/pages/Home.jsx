@@ -1,4 +1,5 @@
 import React from "react";
+import ReviewSlider from "../components/Common/ReviewSlider"
 // Icons Import
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -193,7 +194,7 @@ function Home() {
           Reviews from other learners
         </h1>
 
-        {/* <ReviewSlider /> */}
+        <ReviewSlider />
 
       </div>
 

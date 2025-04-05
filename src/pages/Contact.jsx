@@ -1,4 +1,5 @@
 import React from "react"
+import ReviewSlider from "../components/Common/ReviewSlider"
 
 import Footer from "../components/Common/Footer"
 // import ReviewSlider from "../components/Common/ReviewSlider"

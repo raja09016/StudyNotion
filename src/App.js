@@ -27,19 +27,19 @@ import MyCourses from "./components/core/Dashboard/MyCourses";
 
 import EditCourse from "./components/core/Dashboard/EditCourse";
 import Catalog from "./pages/Catalog";
+import CourseDetails from "./pages/CourseDetails"
+import ViewCourse from "./pages/ViewCourse"
+import VideoDetails from "./components/core/ViewCourse/VideoDetails"
+import Instructor from "./components/core/Dashboard/Instructor";
+import Error from"./pages/Error"
+
 
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { user } = useSelector((state) => state.profile)
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     const token = JSON.parse(localStorage.getItem("token"))
-  //     dispatch(getUserDetails(token, navigate))
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+  
   return (
     <div className="flex min-h-screen w-screen flex-col bg-richblack-900 font-inter">
       <Navbar />
@@ -48,6 +48,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="catalog/:catalogName" element={<Catalog />} />
+        <Route path="courses/:courseId" element={<CourseDetails />} />
+        
         {/* Open Route - for Only Non Logged in User */}
         <Route
           path="login"
@@ -107,7 +109,7 @@ function App() {
               {/* Route only for Instructors */}
                {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && ( 
                 <>
-                  {/* <Route path="dashboard/instructor" element={<Instructor />} /> */}
+                  <Route path="dashboard/instructor" element={<Instructor />} />
                   <Route path="dashboard/my-courses" element={<MyCourses />} />
                   <Route path="dashboard/add-course" element={<AddCourse />} />
                   <Route
@@ -128,7 +130,29 @@ function App() {
               )} 
              
         </Route>
+          
+          
+        {/* For the watching course lectures */}
+        <Route
+          element={
+            <PrivateRoute>
+              <ViewCourse />
+            </PrivateRoute>
+          }
+        >
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route
+                path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+                element={<VideoDetails />}
+              />
+            </>
+          )}
+        </Route>
 
+        
+        {/* 404 Page */}
+        <Route path="*" element={< Error />} />
 
 
 

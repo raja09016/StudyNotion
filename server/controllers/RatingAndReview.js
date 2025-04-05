@@ -5,16 +5,19 @@ const { mongo, default: mongoose } = require("mongoose");
 //createRating
 exports.createRating = async (req, res) => {
     try{
+        console.log("landed");
 
         //get user id
         const userId = req.user.id;
         //fetchdata from req body
         const {rating, review, courseId} = req.body;
+        console.log(req.body)
         //check if user is enrolled or not
         const courseDetails = await Course.findOne(
                                     {_id:courseId,
-                                    studentsEnrolled: {$elemMatch: {$eq: userId} },
+                                    studentsEnroled: {$elemMatch: {$eq: userId} },
                                 });
+                                console.log("coourses",courseDetails);
 
         if(!courseDetails) {
             return res.status(404).json({

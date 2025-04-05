@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+import ReviewSlider from "../components/Common/ReviewSlider"
 
 // import CourseCard from "../components/Catalog/CourseCard"
 // import CourseSlider from "../components/Catalog/CourseSlider"
@@ -134,9 +135,11 @@ function Catalog() {
               ))}
           </div>
         </div>
+        <ReviewSlider/>
+      
       </div>
-
-      <Footer />
+        <Footer />
+     
     </>
   )
 }

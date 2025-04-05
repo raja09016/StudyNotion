@@ -45,7 +45,7 @@ const courseSchema = new mongoose.Schema({
     type: [String],
 		required: true,
   },
-  studentsEnrolled: [
+  studentsEnroled: [
     {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

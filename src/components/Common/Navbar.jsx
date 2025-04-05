@@ -12,6 +12,7 @@ import { ACCOUNT_TYPE } from "../../utils/constants"
 import ProfileDropdown from "../core/Auth/ProfileDropDown"
 import {apiConnector} from "../../services/apiconnector"
 import { categories } from "../../services/apis"
+import MobileNav from "../core/Navbar/MobileNav"
 
 // const subLinks = [
 //   {
@@ -57,7 +58,7 @@ const Navbar = () => {
           } catch (error) {
             console.log("Could not fetch Categories.", error)
           }
-        //   setLoading(false)
+          setLoading(false)
         }
 
     useEffect(() => {
@@ -188,10 +189,12 @@ const Navbar = () => {
             </div>
 
             {/* three line if screen is small */}
-            <button className="mr-4 md:hidden">
-            <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
-            </button>
- 
+            <MobileNav 
+          NavbarLinks={NavbarLinks}
+          matchRoute={matchRoute}
+          subLinks={subLinks}
+          loading={loading}
+        />
   
 
 
