@@ -24,7 +24,7 @@ connect();
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
-const allowedOrigins = ['http://localhost:3000', 'https://studynotion-frontend-seven-olive.vercel.app'];
+const allowedOrigins = ['http://localhost:3000', 'https://studynotion-frontend-d5rvkltoy-raja-kumar-rajaks-projects.vercel.app'];
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin)) {
