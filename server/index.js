@@ -24,7 +24,7 @@ connect();
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
-const allowedOrigins = ['http://localhost:3000', 'https://study-notion-ten-psi.vercel.app/'];
+const allowedOrigins = ['http://localhost:3000', 'https://study-notion-ten-psi.vercel.app'];
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin)) {
